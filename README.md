@@ -2,15 +2,17 @@
 Real-world datasets follow an imbalanced distribution, which poses significant challenges in rare-category object detection. Recent studies tackle this problem by developing re-weighting and re-sampling methods, that utilise the class frequencies of the dataset. However, these techniques focus solely on the frequency statistics and ignore the distribution of the classes in image space, missing important information.
 In contrast to them, we propose <b>FRA</b>ctal <b>CAL</b>ibration (FRACAL): a novel post-calibration method for long-tailed object detection. FRACAL devises a logit adjustment method that utilises the fractal dimension to estimate how uniformly classes are distributed in image space. During inference, it uses the fractal dimension to inversely downweight the probabilities of uniformly spaced class predictions achieving balance in two axes: between frequent and rare categories, and between uniformly spaced and sparsely spaced classes. FRACAL is a post-processing method and it does not require any training, also it can be combined with many off-the-shelf models such as one-stage sigmoid detectors and two-stage instance segmentation models. FRACAL boosts the rare class performance by up to 8.6% and surpasses all previous methods on LVIS dataset, while showing good generalisation to other datasets such as COCO, V3Det and OpenImages.
 
+<br>
+
 <img src="./assets/fracal_teaser.png"
      alt="Fractal calibration method."
-     style="margin-top: 25px;"
+     style="float: left;margin-top: 2em"
 />
 ### Progress
 
 - [x] Training code.
 - [x] Evaluation code.
-- [ ] Provide instance segmentation checkpoint models.
+- [x] Provide instance segmentation checkpoint models.
 
 <h1> Getting Started </h1>
 Create a virtual environment
@@ -126,3 +128,6 @@ The statistical calculations scripts support COCO,LVISv1,LVISv05,V3Det,OpenImage
         <td>29.8</td>
         <td><a href="https://drive.usercontent.google.com/download?id=1wWYsxIZYnqMvUYz2whRMN5KfFMC5ihF5&export=download">weights</a></td>
 </table>
+
+## Acknowledgements
+This code uses <a href='https://pytorch.org/'>Pytorch</a> and the <a href='https://github.com/open-mmlab/mmdetection'>mmdet</a> framework. Thank you for your wonderfull work!
