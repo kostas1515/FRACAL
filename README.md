@@ -1,14 +1,16 @@
 <h1>[CVPR2025] Fractal Calibration for long-tailed object detection </h1>
-Real-world datasets follow an imbalanced distribution, which poses significant challenges in rare-category object detection. Recent studies tackle this problem by developing re-weighting and re-sampling methods, that utilise the class frequencies of the dataset. However, these techniques focus solely on the frequency statistics and ignore the distribution of the classes in image space, missing important information.
-In contrast to them, we propose <b>FRA</b>ctal <b>CAL</b>ibration (FRACAL): a novel post-calibration method for long-tailed object detection. FRACAL devises a logit adjustment method that utilises the fractal dimension to estimate how uniformly classes are distributed in image space. During inference, it uses the fractal dimension to inversely downweight the probabilities of uniformly spaced class predictions achieving balance in two axes: between frequent and rare categories, and between uniformly spaced and sparsely spaced classes. FRACAL is a post-processing method and it does not require any training, also it can be combined with many off-the-shelf models such as one-stage sigmoid detectors and two-stage instance segmentation models. FRACAL boosts the rare class performance by up to 8.6% and surpasses all previous methods on LVIS dataset, while showing good generalisation to other datasets such as COCO, V3Det and OpenImages.
-
- <br />
- <br />
-
+<div align="center">
+ 
+[![Static Badge](https://img.shields.io/badge/arxiv-2410.11774v2-blue)](https://arxiv.org/abs/2410.11774v2)
+</div>
 <img src="./assets/fracal_teaser.png"
      alt="Fractal calibration method."
      style="float: left;margin-top: 2em"
 />
+ <b>Abstract:</b><p> Real-world datasets follow an imbalanced distribution, which poses significant challenges in rare-category object detection. Recent studies tackle this problem by developing re-weighting and re-sampling methods, that utilise the class frequencies of the dataset. However, these techniques focus solely on the frequency statistics and ignore the distribution of the classes in image space, missing important information.
+In contrast to them, we propose <b>FRA</b>ctal <b>CAL</b>ibration (FRACAL): a novel post-calibration method for long-tailed object detection. FRACAL devises a logit adjustment method that utilises the fractal dimension to estimate how uniformly classes are distributed in image space. During inference, it uses the fractal dimension to inversely downweight the probabilities of uniformly spaced class predictions achieving balance in two axes: between frequent and rare categories, and between uniformly spaced and sparsely spaced classes. FRACAL is a post-processing method and it does not require any training, also it can be combined with many off-the-shelf models such as one-stage sigmoid detectors and two-stage instance segmentation models. FRACAL boosts the rare class performance by up to 8.6% and surpasses all previous methods on LVIS dataset, while showing good generalisation to other datasets such as COCO, V3Det and OpenImages.</p>
+
+
 ### Progress
 
 - [x] Training code.
@@ -62,6 +64,7 @@ Train a baseline model on multiple GPUs using <i>tools/dist_train.sh</i> e.g.:
 
 <h1>Inference with Baseline Model</h1>
 To test the MaskRCNN ResNet50 RFS with Normalised Mask and Carafe on 8 GPUs run:
+
 ```
 ./tools/dist_test.sh ./experiments/r50_rfs_cos_lr_norm_4x4_2x_softmax_carafe/r50_rfs_cos_lr_norm_4x4_2x_softmax_carafe.py ./experiments/r50_rfs_cos_lr_norm_4x4_2x_softmax_carafe/epoch_24.pth 8
 ```
@@ -129,6 +132,17 @@ The statistical calculations scripts support COCO,LVISv1,LVISv05,V3Det,OpenImage
         <td>29.8</td>
         <td><a href="https://drive.usercontent.google.com/download?id=1wWYsxIZYnqMvUYz2whRMN5KfFMC5ihF5&export=download">weights</a></td>
 </table>
+
+## BibTeX
+
+```bibtex
+@article{alexandridis2024fractal,
+  title={Fractal Calibration for long-tailed object detection},
+  author={Alexandridis, Konstantinos Panagiotis and Elezi, Ismail and Deng, Jiankang and Nguyen, Anh and Luo, Shan},
+  journal={arXiv preprint arXiv:2410.11774},
+  year={2024}
+}
+```
 
 ## Acknowledgements
 This code uses <a href='https://pytorch.org/'>Pytorch</a> and the <a href='https://github.com/open-mmlab/mmdetection'>mmdet</a> framework. Thank you for your wonderfull work!
