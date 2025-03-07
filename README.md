@@ -95,10 +95,10 @@ python calculate_fractality.py --dset_name lvisv1 --path ./lvis_v1_train_stats.c
 
 To generate the frequency weights run:
 ```
-python get_frequency.py --path ../../../datasets/coco/annotations/lvis_v1_train.json --output idf_lvis_v1_train.csv
+python get_frequency.py --path ../../../datasets/coco/annotations/lvis_v1_train.json --output freq_lvis_v1_train.csv
 ```
 
-This will create a csv containing various frequency weights based on instance frequency or image frequency using various link functions. The ```lvis_v1_train_fractal_dim.csv``` and ```idf_lvis_v1_train.csv``` are used inside the ```\mmdet\models\roi_heads\bbox_heads\fracal_bbox_head.py``` script.
+This will create a csv containing various frequency weights based on instance frequency or image frequency using various link functions. The ```lvis_v1_train_fractal_dim.csv``` and ```freq_lvis_v1_train.csv``` are used inside the ```\mmdet\models\roi_heads\bbox_heads\fracal_bbox_head.py``` script.
 
 The statistical calculations scripts support COCO,LVISv1,LVISv05,V3Det,OpenImages datasets.
 
